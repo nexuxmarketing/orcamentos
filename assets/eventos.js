@@ -20,7 +20,7 @@ const EVENTOS = {
     },
     itens: [
       { id: "civil",  nome: "Fotos do civil", desc: "Cobertura completa da cerimônia civil, do início ao fim", preco: 150 },
-      { id: "teaser", nome: "Vídeo · teaser do casamento", desc: "1 a 1min30 com os melhores momentos, pronto pra postar", preco: 350 },
+      { id: "teaser", nome: "Vídeo · teaser do casamento", desc: "1 a 1min30 com os melhores momentos, pronto pra postar", preco: 250 },
       { id: "pre",    nome: "Ensaio pré-wedding", desc: "Até 1h30, em 1 locação · fotos do casal antes do grande dia", preco: 250 },
       { id: "takes",  nome: "Takes do pré-wedding no teaser", desc: "Gravamos o casal no ensaio e essas cenas abrem o teaser", preco: 80, requer: ["teaser", "pre"] },
       { id: "making", nome: "Making of", desc: "Fotos de vocês se arrumando antes do civil", preco: 70 }
@@ -52,7 +52,7 @@ const EVENTOS = {
       horas: { 3: 380, 4: 450, 5: 520 }
     },
     itens: [
-      { id: "teaser",  nome: "Vídeo · teaser da festa", desc: "1 min com os melhores momentos, pronto pra postar", preco: 300 },
+      { id: "teaser",  nome: "Vídeo · teaser da festa", desc: "1 min com os melhores momentos, pronto pra postar", preco: 220 },
       { id: "ensaio",  nome: "Ensaio temático", desc: "Ensaio da criança antes da festa (smash the cake ou com o tema)", preco: 200 },
       { id: "decor",   nome: "Fotos da decoração vazia", desc: "Chegamos antes dos convidados para fotografar a mesa e a decoração", preco: 50 },
       { id: "stories", nome: "Stories em tempo real", desc: "Postamos stories da festa enquanto ela acontece", preco: 100 }
@@ -84,7 +84,7 @@ const EVENTOS = {
       horas: { 2: 300, 3: 370, 4: 440 }
     },
     itens: [
-      { id: "teaser",  nome: "Vídeo · teaser do batizado", desc: "1 min com os melhores momentos, pronto pra postar", preco: 280 },
+      { id: "teaser",  nome: "Vídeo · teaser do batizado", desc: "1 min com os melhores momentos, pronto pra postar", preco: 200 },
       { id: "familia", nome: "Ensaio de família", desc: "Ensaio curto com os pais e o bebê antes ou depois da cerimônia", preco: 150 },
       { id: "making",  nome: "Making of", desc: "Fotos da preparação do bebê e da família em casa", preco: 70 }
     ],
