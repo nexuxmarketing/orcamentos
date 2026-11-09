@@ -9,7 +9,7 @@
   const horasLista = Object.keys(ev.base.horas).map(Number);
   let horas = horasLista[0];
   let sel = [];
-  const voltar = "../" + location.search;
+  const voltar = "../";
 
   document.title = "Orçamento · " + ev.nome + (nome ? " · " + nome : "") + " · Nexux";
 
