@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orçamento · Casamento · Nexux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#07112b; --navy2:#0d1c45; --blue:#1f5cff; --cyan:#19d3f5;
+  --ink:#0b1430; --muted:#5d6b8a; --line:#e3e8f3; --bg:#f4f7fc; --white:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;padding-bottom:110px}
+h1,h2,h3,.sora{font-family:Sora,sans-serif}
+.hero{background:radial-gradient(120% 140% at 85% 0%,#1d3fa8 0%,var(--navy2) 40%,var(--navy) 100%);color:#fff;padding:28px 20px 70px}
+.wrap{max-width:980px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px}
+.brand .n{font-family:Sora;font-weight:800;letter-spacing:.18em;font-size:15px}
+.brand .m{font-size:9.5px;letter-spacing:.28em;color:var(--cyan);font-weight:600}
+.hero h1{font-size:clamp(26px,5vw,40px);font-weight:700;margin-top:34px;line-height:1.15}
+.hero h1 span{background:linear-gradient(90deg,var(--cyan),#7fb2ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:#c4d0ee;margin-top:12px;max-width:560px;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);border-radius:99px;padding:6px 12px;font-size:12.5px;color:#dfe7fb}
+.chip b{color:var(--cyan);font-weight:600}
+main{margin-top:-44px;padding:0 16px}
+.sec-t{font-size:20px;font-weight:700;margin:34px 0 4px}
+.sec-s{color:var(--muted);font-size:14px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px}
+.card{background:var(--white);border:2px solid var(--line);border-radius:18px;padding:20px 18px;cursor:pointer;transition:.18s;position:relative;display:flex;flex-direction:column;text-align:left;font:inherit;color:inherit}
+.card:hover{border-color:#b7c6ef;transform:translateY(-2px)}
+.card.sel{border-color:var(--blue);box-shadow:0 10px 30px -12px rgba(31,92,255,.45)}
+.card .tag{font-size:10.5px;letter-spacing:.14em;font-weight:700;color:var(--blue)}
+.card h3{font-size:19px;margin-top:4px}
+.card .price{font-family:Sora;font-weight:800;font-size:26px;margin-top:10px}
+.card .old{color:#98a3bd;text-decoration:line-through;font-size:13px;margin-left:6px;font-weight:500}
+.card ul{list-style:none;margin-top:12px;font-size:13.5px;color:#33405f;flex:1}
+.card li{padding:5px 0 5px 20px;position:relative;border-top:1px dashed var(--line)}
+.card li:first-child{border-top:none}
+.card li::before{content:"";position:absolute;left:2px;top:11px;width:9px;height:9px;border-radius:3px;background:linear-gradient(135deg,var(--blue),var(--cyan))}
+.card .pick{margin-top:14px;text-align:center;border-radius:10px;padding:9px;font-weight:600;font-size:13.5px;background:#eef3ff;color:var(--blue)}
+.card.sel .pick{background:var(--blue);color:#fff}
+.badge{position:absolute;top:-11px;right:14px;background:linear-gradient(90deg,var(--blue),var(--cyan));color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:4px 10px;border-radius:99px}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:8px 18px}
+.opt{display:flex;align-items:center;gap:14px;padding:15px 0;border-top:1px solid var(--line);cursor:pointer}
+.opt:first-child{border-top:none}
+.opt input{display:none}
+.box{width:24px;height:24px;border-radius:7px;border:2px solid #c3cde3;flex:none;display:grid;place-items:center;transition:.15s}
+.opt input:checked + .box{background:var(--blue);border-color:var(--blue)}
+.opt input:checked + .box::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.opt.locked{cursor:default}
+.opt.locked .box{background:#9fb0d6;border-color:#9fb0d6}
+.opt.locked .box::after{content:"";width:6px;height:11px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.opt.off{opacity:.45;cursor:not-allowed}
+.opt .txt{flex:1}
+.opt .t{font-weight:600;font-size:15px}
+.opt .d{color:var(--muted);font-size:13px}
+.opt .v{font-family:Sora;font-weight:700;font-size:15px;white-space:nowrap}
+.hours{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap}
+.hours button{font:600 13px Inter;border:2px solid var(--line);background:#fff;border-radius:10px;padding:7px 12px;cursor:pointer;color:var(--ink)}
+.hours button.on{border-color:var(--blue);background:#eef3ff;color:var(--blue)}
+.hours small{display:block;font-weight:500;font-size:11px;color:var(--muted)}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.ib{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.ib .k{font-size:10.5px;letter-spacing:.14em;color:var(--blue);font-weight:700}
+.ib .big{font-family:Sora;font-weight:800;font-size:22px;margin-top:4px}
+.ib p{font-size:13.5px;color:#33405f;margin-top:4px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--navy);color:#fff;padding:12px 16px;box-shadow:0 -10px 30px rgba(7,17,43,.25);z-index:5}
+.bar .wrap{display:flex;align-items:center;gap:14px;justify-content:space-between}
+.bar .lab{font-size:11px;letter-spacing:.14em;color:var(--cyan);font-weight:600}
+.bar .tot{font-family:Sora;font-weight:800;font-size:26px;line-height:1.1}
+.bar .sub{font-size:12px;color:#aebbe0}
+.bar button{font:600 14px Inter;border:none;border-radius:12px;padding:12px 18px;background:linear-gradient(90deg,var(--blue),#3a7bff);color:#fff;cursor:pointer;white-space:nowrap}
+.foot{text-align:center;color:var(--muted);font-size:12.5px;margin:36px 0 10px}
+.toast{position:fixed;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);background:#13234f;color:#fff;padding:10px 16px;border-radius:10px;font-size:13.5px;opacity:0;transition:.25s;pointer-events:none;z-index:6}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.disc{color:var(--cyan);font-weight:600}
+@media (max-width:560px){.bar .tot{font-size:22px}.bar button{padding:11px 13px;font-size:13px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <svg width="38" height="38" viewBox="0 0 100 100" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f5cff"/><stop offset="1" stop-color="#19d3f5"/></linearGradient></defs><polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="none" stroke="url(#g)" stroke-width="7"/><path d="M34 70V30l32 40V30" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      <div><div class="n">NEXUX</div><div class="m">MARKETING DIGITAL</div></div>
+    </div>
+    <h1>Casamento da <span id="cliente"></span></h1>
+    <p>Escolha um dos pacotes prontos ou monte o seu do jeito que preferir. O valor atualiza na hora.</p>
+    <div class="chips">
+      <div class="chip">📍 <b id="cidade"></b></div>
+      <div class="chip">💍 <span id="evento"></span></div>
+      <div class="chip">👥 ~<span id="convidados"></span> convidados</div>
+      <div class="chip">📸 Fotos <b>sem limite</b></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2 class="sec-t">Pacotes prontos</h2>
+  <p class="sec-s">Valores com 3 horas de festa. Toque em um pacote para selecionar.</p>
+  <div class="grid" id="packs"></div>
+
+  <h2 class="sec-t">Monte o seu</h2>
+  <p class="sec-s">Marque só o que vocês querem. Escolhendo um pacote acima, as opções já vêm marcadas aqui.</p>
+  <div class="panel" id="builder">
+    <label class="opt locked">
+      <span class="box"></span>
+      <div class="txt">
+        <div class="t">Fotos da festa</div>
+        <div class="d">Todas as fotos boas editadas · prévia com 10 a 15 fotos em até 48h</div>
+        <div class="hours" id="hours"></div>
+      </div>
+      <div class="v" id="v-festa"></div>
+    </label>
+    <label class="opt"><input type="checkbox" id="civil"><span class="box"></span>
+      <div class="txt"><div class="t">Fotos do civil</div><div class="d">Cobertura completa da cerimônia civil, do início ao fim</div></div>
+      <div class="v" data-p="civil"></div></label>
+    <label class="opt"><input type="checkbox" id="teaser"><span class="box"></span>
+      <div class="txt"><div class="t">Vídeo · teaser do casamento</div><div class="d">1 a 1min30 com os melhores momentos, pronto pra postar</div></div>
+      <div class="v" data-p="teaser"></div></label>
+    <label class="opt"><input type="checkbox" id="pre"><span class="box"></span>
+      <div class="txt"><div class="t">Ensaio pré-wedding</div><div class="d">Até 1h30, em 1 locação · fotos do casal antes do grande dia</div></div>
+      <div class="v" data-p="pre"></div></label>
+    <label class="opt" id="opt-takes"><input type="checkbox" id="takes"><span class="box"></span>
+      <div class="txt"><div class="t">Takes do pré-wedding no teaser</div><div class="d" id="d-takes">Gravamos o casal no ensaio e essas cenas abrem o teaser</div></div>
+      <div class="v" data-p="takes"></div></label>
+    <label class="opt"><input type="checkbox" id="making"><span class="box"></span>
+      <div class="txt"><div class="t">Making of</div><div class="d">Fotos de vocês se arrumando antes do civil</div></div>
+      <div class="v" data-p="making"></div></label>
+  </div>
+
+  <h2 class="sec-t">Como funciona</h2>
+  <p class="sec-s">Simples e sem surpresas.</p>
+  <div class="info">
+    <div class="ib"><div class="k">RESERVA DA DATA</div><div class="big">30%</div><p>de sinal no fechamento. Garante a data e o valor.</p></div>
+    <div class="ib"><div class="k">RESTANTE</div><div class="big">70%</div><p>até 30 dias antes do casamento.</p></div>
+    <div class="ib"><div class="k">HORA EXTRA NO DIA</div><div class="big" id="hx"></div><p>por hora, se a festa passar do horário contratado.</p></div>
+  </div>
+  <p class="foot">Nexux Marketing Digital · Tambaú/SP · Proposta válida por 15 dias</p>
+</main>
+
+<div class="bar">
+  <div class="wrap">
+    <div>
+      <div class="lab" id="bar-lab">SUA ESCOLHA</div>
+      <div class="tot" id="tot">R$ 0</div>
+      <div class="sub" id="sub"></div>
+    </div>
+    <button id="copy">Copiar minha escolha</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   CONFIGURAÇÃO — mude só aqui para cada nova cliente
+   ========================================================= */
+const CONFIG={
+  cliente:"Ana Júlia",
+  cidade:"Tambaú/SP",
+  evento:"Civil + festa",
+  convidados:100,
+  horaExtra:150,
+  // preço da festa por duração (horas: valor)
+  festa:{3:450,4:530,5:620},
+  // itens opcionais
+  itens:{civil:150,teaser:350,pre:250,takes:80,making:70},
+  // descontos de combo
+  descontoTeaserPre:50,   // teaser + pré-wedding
+  descontoCompleto:60     // todos os itens
+};
+/* ========================================================= */
+const PRICE=CONFIG.itens;
+const HOURS=CONFIG.festa;
+const LABEL={civil:"Fotos do civil",teaser:"Teaser do casamento",pre:"Ensaio pré-wedding",takes:"Takes do pré-wedding no teaser",making:"Making of"};
+const PACKS=[
+  {id:"essencial",tag:"ESSENCIAL",name:"Essencial",items:["civil"],bul:["Fotos do civil, do início ao fim","Fotos da festa por 3 horas","Prévia em até 48h"]},
+  {id:"classico",tag:"CLÁSSICO",name:"Clássico",items:["civil","teaser"],bul:["Tudo do Essencial","Teaser do casamento em vídeo"]},
+  {id:"especial",tag:"ESPECIAL",name:"Especial",items:["civil","teaser","pre"],badge:"MAIS ESCOLHIDO",bul:["Tudo do Clássico","Ensaio pré-wedding"]},
+  {id:"completo",tag:"COMPLETO",name:"Completo",items:["civil","teaser","pre","takes","making"],bul:["Tudo do Especial","Takes do ensaio abrindo o teaser","Making of antes do civil"]}
+];
+let hours=3;
+const $=id=>document.getElementById(id);
+const brl=n=>"R$ "+n.toLocaleString("pt-BR");
+const keys=Object.keys(PRICE);
+
+function state(){const s={};keys.forEach(k=>s[k]=$(k).checked);return s}
+function discount(s){
+  if(s.civil&&s.teaser&&s.pre&&s.takes&&s.making) return CONFIG.descontoCompleto;
+  if(s.teaser&&s.pre) return CONFIG.descontoTeaserPre;
+  return 0;
+}
+function calc(s,h){
+  let full=HOURS[h];keys.forEach(k=>{if(s[k])full+=PRICE[k]});
+  const d=discount(s);return {full,d,total:full-d};
+}
+function packState(p){const s={};keys.forEach(k=>s[k]=p.items.includes(k));return s}
+
+function renderPacks(){
+  $("packs").innerHTML=PACKS.map(p=>{
+    const c=calc(packState(p),3);
+    return `<button class="card" data-id="${p.id}" type="button">
+      ${p.badge?`<span class="badge">${p.badge}</span>`:""}
+      <div class="tag">${p.tag}</div><h3>${p.name}</h3>
+      <div class="price">${brl(c.total)}${c.d?`<span class="old">${brl(c.full)}</span>`:""}</div>
+      <ul>${p.bul.map(b=>`<li>${b}</li>`).join("")}</ul>
+      <div class="pick">Escolher este</div></button>`}).join("");
+  document.querySelectorAll(".card").forEach(el=>el.onclick=()=>{
+    const p=PACKS.find(x=>x.id===el.dataset.id);
+    keys.forEach(k=>$(k).checked=p.items.includes(k));
+    update();
+    $("builder").scrollIntoView({behavior:"smooth",block:"start"});
+  });
+}
+function renderHours(){
+  $("hours").innerHTML=[3,4,5].map(h=>`<button type="button" data-h="${h}" class="${h===hours?"on":""}">${h} horas<small>${h===3?"incluso":"+ "+brl(HOURS[h]-HOURS[3])}</small></button>`).join("");
+  document.querySelectorAll("#hours button").forEach(b=>b.onclick=e=>{e.preventDefault();hours=+b.dataset.h;update()});
+}
+function update(){
+  // takes depende de pré-wedding + teaser
+  const ok=$("pre").checked&&$("teaser").checked;
+  if(!ok) $("takes").checked=false;
+  $("takes").disabled=!ok;
+  $("opt-takes").classList.toggle("off",!ok);
+  $("d-takes").textContent=ok?"Gravamos o casal no ensaio e essas cenas abrem o teaser":"Precisa do teaser e do pré-wedding marcados";
+  renderHours();
+  $("v-festa").textContent=brl(HOURS[hours]);
+  const s=state(),c=calc(s,hours);
+  const match=PACKS.find(p=>keys.every(k=>p.items.includes(k)===s[k]));
+  document.querySelectorAll(".card").forEach(el=>el.classList.toggle("sel",!!match&&hours===3&&el.dataset.id===match.id));
+  $("bar-lab").textContent=match?("PACOTE "+match.name.toUpperCase()+(hours>3?" · "+hours+"H DE FESTA":"")):"MONTADO POR VOCÊ";
+  $("tot").textContent=brl(c.total);
+  $("sub").innerHTML=c.d?`<span class="disc">Desconto de combo: − ${brl(c.d)}</span> · sinal de ${brl(Math.round(c.total*.3))}`:`Sinal de 30%: ${brl(Math.round(c.total*.3))}`;
+}
+keys.forEach(k=>$(k).addEventListener("change",update));
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2200)}
+$("copy").onclick=async()=>{
+  const s=state(),c=calc(s,hours);
+  const match=PACKS.find(p=>keys.every(k=>p.items.includes(k)===s[k]));
+  const lines=["Oi! Minha escolha no orçamento da Nexux:",match?`Pacote ${match.name}`:"Pacote montado por mim",`• Fotos da festa (${hours} horas)`];
+  keys.forEach(k=>{if(s[k])lines.push("• "+LABEL[k])});
+  lines.push(`Total: ${brl(c.total)}`);
+  const txt=lines.join("\n");
+  try{await navigator.clipboard.writeText(txt);toast("Copiado! Agora é só colar no WhatsApp 💙")}
+  catch(e){toast("Não deu pra copiar automático. Tire um print desta tela 🙂")}
+};
+$("cliente").textContent=CONFIG.cliente;
+$("cidade").textContent=CONFIG.cidade;
+$("evento").textContent=CONFIG.evento;
+$("convidados").textContent=CONFIG.convidados;
+$("hx").textContent=brl(CONFIG.horaExtra);
+document.title="Orçamento · Casamento da "+CONFIG.cliente+" · Nexux";
+document.querySelectorAll("[data-p]").forEach(el=>el.textContent="+ "+brl(PRICE[el.dataset.p]));
+renderPacks();
+keys.forEach(k=>$(k).checked=PACKS[2].items.includes(k));
+update();
+</script>
+</body>
+</html>
