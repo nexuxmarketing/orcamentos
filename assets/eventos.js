@@ -21,7 +21,7 @@ const EVENTOS = {
     itens: [
       { id: "civil",  nome: "Fotos do civil", desc: "Cobertura completa da cerimônia civil, do início ao fim", preco: 150 },
       { id: "teaser", nome: "Vídeo · teaser do casamento", desc: "1 a 1min30 com os melhores momentos, pronto pra postar", preco: 250 },
-      { id: "pre",    nome: "Ensaio pré-wedding", desc: "Até 1h30, em 1 locação · fotos do casal antes do grande dia", preco: 300 },
+      { id: "pre",    nome: "Ensaio pré-wedding", desc: "Até 1h30, em 1 locação · fotos do casal antes do grande dia", preco: 350 },
       { id: "takes",  nome: "Takes do pré-wedding no teaser", desc: "Gravamos o casal no ensaio e essas cenas abrem o teaser", preco: 80, requer: ["teaser", "pre"] },
       { id: "making", nome: "Making of", desc: "Fotos de vocês se arrumando antes do civil", preco: 70 }
     ],
