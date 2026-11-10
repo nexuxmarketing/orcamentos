@@ -10,30 +10,30 @@ const EVENTOS = {
     nome: "Casamento",
     titulo: "Casamento",
     icone: "anel",
-    resumo: "Civil, cerimônia e festa. Com teaser e ensaio pré-wedding.",
-    chips: [["anel", "Civil + festa"], ["camera", "Fotos <b>sem limite</b>"]],
+    resumo: "Cerimônia na igreja, civil ou ao ar livre, e festa. Com teaser e ensaio pré-wedding.",
+    chips: [["anel", "Cerimônia + festa"], ["camera", "Fotos <b>sem limite</b>"]],
     horaExtra: 150,
     base: {
-      nome: "Fotos da festa",
-      desc: "Todas as fotos boas editadas · prévia com 10 a 15 fotos em até 48h",
-      horas: { 3: 450, 4: 530, 5: 620 }
+      nome: "Cerimônia + festa",
+      desc: "Cerimônia (igreja, civil ou ao ar livre) e festa · todas as fotos boas editadas · prévia em até 48h",
+      horas: { 3: 450, 4: 530, 5: 620, 6: 710 }
     },
     itens: [
-      { id: "civil",  nome: "Fotos do civil", desc: "Cobertura completa da cerimônia civil, do início ao fim", preco: 150 },
       { id: "teaser", nome: "Vídeo · teaser do casamento", desc: "1 a 1min30 com os melhores momentos, pronto pra postar", preco: 250 },
       { id: "pre",    nome: "Ensaio pré-wedding", desc: "Até 1h30, em 1 locação · fotos do casal antes do grande dia", preco: 300 },
       { id: "takes",  nome: "Takes do pré-wedding no teaser", desc: "Gravamos o casal no ensaio e essas cenas abrem o teaser", preco: 80, requer: ["teaser", "pre"] },
-      { id: "making", nome: "Making of", desc: "Fotos de vocês se arrumando antes do civil", preco: 70 }
+      { id: "making", nome: "Making of", desc: "Fotos da preparação dos noivos antes da cerimônia", preco: 70 },
+      { id: "civil",  nome: "Civil no cartório (em outro dia)", desc: "Se o civil for separado da cerimônia: cobertura completa, do início ao fim", preco: 150 }
     ],
     pacotes: [
-      { id: "essencial", nome: "Essencial", itens: ["civil"], lista: ["Fotos do civil, do início ao fim", "Fotos da festa", "Prévia em até 48h"] },
-      { id: "classico",  nome: "Clássico",  itens: ["civil", "teaser"], lista: ["Tudo do Essencial", "Teaser do casamento em vídeo"] },
-      { id: "especial",  nome: "Especial",  itens: ["civil", "teaser", "pre"], selo: "MAIS ESCOLHIDO", lista: ["Tudo do Clássico", "Ensaio pré-wedding"] },
-      { id: "completo",  nome: "Completo",  itens: ["civil", "teaser", "pre", "takes", "making"], lista: ["Tudo do Especial", "Takes do ensaio abrindo o teaser", "Making of antes do civil"] }
+      { id: "essencial", nome: "Essencial", itens: [], lista: ["Fotos da cerimônia e da festa", "Fotos sem limite", "Prévia em até 48h"] },
+      { id: "classico",  nome: "Clássico",  itens: ["teaser"], lista: ["Tudo do Essencial", "Teaser do casamento em vídeo"] },
+      { id: "especial",  nome: "Especial",  itens: ["teaser", "pre"], selo: "MAIS ESCOLHIDO", lista: ["Tudo do Clássico", "Ensaio pré-wedding"] },
+      { id: "completo",  nome: "Completo",  itens: ["teaser", "pre", "takes", "making"], lista: ["Tudo do Especial", "Takes do ensaio abrindo o teaser", "Making of dos noivos"] }
     ],
     descontos: [
       { se: ["teaser", "pre"], valor: 50 },
-      { se: ["civil", "teaser", "pre", "takes", "making"], valor: 60 }
+      { se: ["teaser", "pre", "takes", "making"], valor: 60 }
     ],
     padrao: "especial"
   },
